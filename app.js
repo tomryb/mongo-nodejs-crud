@@ -74,6 +74,34 @@ app.post('/book2', function(req, res) {
   });
 });
 
+app.put('/book/:id', function(req, res) {
+  Book.findOneAndUpdate({
+    _id: req.params.id
+    },
+    { $set: { title: req.body.title }
+  }, {upsert: true}, function(err, newBook) {
+    if (err) {
+      res.send('error updating ');
+    } else {
+      console.log(newBook);
+      res.send(newBook);
+    }
+  });
+});
+
+app.delete('/book/:id', function(req, res) {
+  Book.findOneAndRemove({
+    _id: req.params.id
+  }, function(err, book) {
+    if(err) {
+      res.send('error removing')
+    } else {
+      console.log(book);
+      res.status(204);
+    }
+  });
+});
+
 app.listen(port, function() {
   console.log('app listening on port ' + port);
 });
