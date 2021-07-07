@@ -1,4 +1,5 @@
-# mongo-nodejs-crud
+### mongo-nodejs-crud
 
+Prosta aplikacja CRUD w celu nauki zastosowania Node.js + MongoDB.
 
-endpointy w postman
+Endpointy w postman
